@@ -1,0 +1,40 @@
+#!/bin/bash
+set -eufo pipefail
+
+
+{{ if eq .chezmoi.os "darwin" -}}
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range .packages.universal.taps -}}
+tap {{ . | quote | replace " " "\", \"" }}
+{{ end -}}
+{{ range .packages.universal.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.universal.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range .packages.universal.mas -}}
+mas {{ .name | quote }}, id: {{ .id }}
+{{ end -}}
+EOF
+{{ end -}}
+
+{{ if .isWorkComputer -}}
+
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range .packages.work.taps -}}
+tap {{ . | quote | replace " " "\", \"" }}
+{{ end -}}
+{{ range .packages.work.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.work.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range .packages.work.mas -}}
+mas {{ .name | quote }}, id: {{ .id }}
+{{ end -}}
+EOF
+{{ end -}}

@@ -1,0 +1,32 @@
+#!/bin/bash
+set -eufo pipefail
+
+{{- if (eq .chezmoi.os "darwin") }}
+
+############################
+fish_shell="$(command -v fish || true)"
+echo "🔄 Changing your shell to Fish ($fish_shell)..."
+
+if chsh -s "$fish_shell"; then
+  echo "✅ Shell successfully changed to '$fish_shell'."
+else
+  echo "❌ Failed to change shell."
+fi
+
+############################
+echo "ℹ️ Adding SSH keys in ~/.ssh to macOS keychain..."
+
+shopt -s nullglob   # so loop skips if no matches
+for key in ~/.ssh/id_* ~/.ssh/*_ed25519 ~/.ssh/*_rsa; do
+    [[ -f "$key" && "$key" != *.pub ]] || continue
+    echo "→ Adding key: $key"
+    ssh-add --apple-use-keychain "$key" 2>/dev/null || echo "   (skipped or already added)"
+done
+
+############################
+echo "Setting system preferences"
+
+# Show all files
+defaults write com.apple.finder AppleShowAllFiles YES
+
+{{ end -}}

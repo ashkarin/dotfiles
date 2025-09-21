@@ -1,0 +1,39 @@
+packages:
+    universal:
+        taps:
+        brews:
+            - "mise"
+            - "duti"
+            # Shell
+            - "fish"
+            - "fisher"
+            - "starship"        
+            # Git
+            - "git"
+            - "git-delta"
+            - "lazygit"
+            - "bat"
+            # Containers
+            - "podman"
+            # Utils
+            - "tree"
+            - "jq"
+            - "fzf"
+            - "tlrc"
+            - "zoxide"
+            - "jless"
+            - "gpg"
+        casks:
+            - "ghostty"
+            - "raycast"
+            - "spotify"
+        mas:
+
+    work:
+        taps:
+        brews:
+            # AWS
+            - "awscli"
+            - "aws-vault"
+        casks:
+        mas:

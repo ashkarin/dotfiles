@@ -1,0 +1,9 @@
+{{- $isWorkComputer := promptBoolOnce . "isWorkComputer" "Is this your work computer" -}}
+
+encryption = "age"
+[age]
+    identity = "~/.config/chezmoi/key.txt"
+    recipient = "age1j0087phfpfvyz3uhwpg0e2rpq904x0k23e6v727pgdvzrrykrddqht9dc4"
+
+[data]
+    isWorkComputer = {{ $isWorkComputer }}
