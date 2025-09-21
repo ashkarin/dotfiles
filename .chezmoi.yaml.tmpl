@@ -1,0 +1,13 @@
+encryption: age
+
+age:
+  identity: ~/.config/chezmoi/key.txt
+  recipient: age1j0087phfpfvyz3uhwpg0e2rpq904x0k23e6v727pgdvzrrykrddqht9dc4
+
+
+# Template data
+data:
+  name: "Andrei Shkarin"
+  email: "andrei.shkarin@gmail.com"
+  setSshKey: {{ promptBool "Do you want to set up an SSH key" }}
+  sshSigningKeyName: sennder_com_ed25519

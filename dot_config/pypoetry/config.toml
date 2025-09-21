@@ -1,0 +1,20 @@
+[virtualenvs]
+in-project = true
+path = ".venv"
+
+[cache]
+cache-dir = "~/.cache/pypoetry"
+
+[installer]
+parallel = true
+max-workers = 6
+
+[repositories]
+pypi = { url = "https://pypi.org/simple/", priority = "primary" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[log]
+level = "info"

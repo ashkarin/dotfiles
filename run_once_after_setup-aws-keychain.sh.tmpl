@@ -1,0 +1,36 @@
+#!/bin/bash
+set -eufo pipefail
+
+{{- if (eq .chezmoi.os "darwin") }}
+
+KEYCHAIN_PATH="$HOME/Library/Keychains/aws-vault.keychain-db"
+
+if [ ! -f "$KEYCHAIN_PATH" ]; then
+  echo "🔑  aws-vault keychain not found, creating..."
+  
+  # Create the keychain
+  security create-keychain -p "" aws-vault.keychain
+  security default-keychain -s aws-vault.keychain
+  security unlock-keychain -p "" aws-vault.keychain
+  security set-keychain-settings -t 3600 -l -u aws-vault.keychain
+  
+  echo "✅  aws-vault keychain created and configured"
+else
+  echo "ℹ️  aws-vault keychain already exists, skipping creation"
+fi
+
+echo "🔧  Configuring keychain settings..."
+security set-keychain-settings -t 3600 -l -u aws-vault.keychain
+
+# Add to login keychain search list
+CURRENT_LIST=$(security list-keychains -d user | tr -d '"' | xargs)
+security list-keychains -d user -s aws-vault.keychain $CURRENT_LIST
+
+echo "✅  Keychain setup completed!"
+echo ""
+echo "📋 Keychain settings:"
+echo "   - Lock timeout: 1 hour"
+echo "   - Auto-lock: enabled"
+echo "   - Added to login keychain search list"
+
+{{ end -}}

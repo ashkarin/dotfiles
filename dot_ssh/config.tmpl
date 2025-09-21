@@ -1,0 +1,15 @@
+# GitLab.com
+Host gitlab.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/{{ .sshSigningKeyName }}
+
+# GitHub.com
+Host github.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/{{ .sshSigningKeyName }}
+
+# General settings
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentitiesOnly yes
