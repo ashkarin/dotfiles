@@ -22,5 +22,8 @@ abbr gb "git branch"
 abbr gco "git checkout"
 abbr lg "lazygit"
 
+# Mise
+abbr mx "mise exec"
+
 # 
 abbr dotfiles "curl -sfL https://raw.githubusercontent.com/ashkarin/dotfiles/master/.setup.sh | bash"
