@@ -1,2 +1,12 @@
+# https://mise.jdx.dev/configuration.html
+
 [settings]
-idiomatic_version_file_enable_tools = ["python"]
+idiomatic_version_file_enable_tools = ["python", "node"]
+plugin_autoupdate_last_check_duration = '1 week' # set to 0 to disable updates
+
+[tools]
+python = "latest"
+
+[alias]
+python = "core:python"
+poetry = "asdf:poetry"
