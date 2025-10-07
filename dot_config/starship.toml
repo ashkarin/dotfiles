@@ -1,6 +1,6 @@
 # Get editor from environment variable
 format = """
-[╭─](bold blue)$username$hostname$directory$git_branch$git_state$git_status$nodejs$python$poetry$rust$golang$docker_context$aws$nix_shell$memory_usage$cmd_duration$line_break$character"""
+[╭─](bold blue)$username$hostname$directory$git_branch$git_state$git_status$nodejs$python$rust$golang$docker_context$aws$nix_shell$memory_usage$cmd_duration$line_break$character"""
 
 # Don't print a new line at the start of the prompt
 add_newline = false
@@ -47,11 +47,6 @@ symbol = "🐍 "
 style = "yellow bold"
 format = "via [${symbol}${pyenv_prefix}(${version} )((${virtualenv} ))]($style)"
 
-# Poetry configuration
-[poetry]
-symbol = "📦 "
-style = "bold green"
-format = "via [${symbol}${version} ]($style)"
 
 # Node.js configuration
 [nodejs]
