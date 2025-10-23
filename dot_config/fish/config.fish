@@ -4,7 +4,7 @@ fish_add_path $(mise bin-paths)
 
 # Podman configuration
 set -gx BUILDAH_FORMAT docker
-set -gx CONTAINER_HOST "unix:///Users/$USER/.local/share/containers/podman/machine/podman-machine-default/podman.sock"
+set -gx CONTAINER_HOST "unix:///Users/$USER/.local/share/containers/podman/machine/podman.sock"
 
 
 # Load mise for version management
